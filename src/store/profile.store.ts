@@ -1,16 +1,27 @@
-import { API_ROUTES } from '@/api'
+import { API_ROUTES, apiClient } from '@/api'
 import type { TypeProfile } from '@/types'
-import axios from 'axios'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useProfileStore = defineStore('profile', () => {
   const profile = ref<TypeProfile>()
+  const isLoading = ref(false)
+  const error = ref<string | null>(null)
 
-  async function fetchProfile() {
-    const { data } = await axios.get<TypeProfile>(API_ROUTES.profile)
-    profile.value = data
+  async function getProfile() {
+    isLoading.value = true
+    error.value = null
+
+    try {
+      const { data } = await apiClient.get<TypeProfile>(API_ROUTES.auth.profile)
+      profile.value = data
+    } catch (err: any) {
+      error.value = err.response?.data?.message || 'Ошибка загрузки профиля'
+      throw err
+    } finally {
+      isLoading.value = false
+    }
   }
 
-  return { profile, fetchProfile }
+  return { profile, isLoading, error, getProfile }
 })
