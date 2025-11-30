@@ -21,7 +21,6 @@ const props = defineProps<{
 
 <style scoped>
 .button {
-  min-height: 37px;
   border-radius: 10px;
   background: var(--color-fg);
   color: var(--color-bg);
@@ -32,7 +31,6 @@ const props = defineProps<{
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: none;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,

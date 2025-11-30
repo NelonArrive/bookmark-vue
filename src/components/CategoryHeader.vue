@@ -56,7 +56,7 @@ watch(
         v-else
         v-model="newCategoryName"
         @keydown="handleKeyPress"
-        autofocus
+        isFocused
         class="title-input"
       />
     </div>

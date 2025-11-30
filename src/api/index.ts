@@ -38,6 +38,7 @@ export const API_ROUTES = {
   bookmarks: {
     getAll: (categoryId: number) => `/categories/${categoryId}/bookmarks`,
     delete: (id: number) => `/bookmarks/${id}`,
+    create: '/bookmarks',
   },
   auth: {
     login: '/auth/login',

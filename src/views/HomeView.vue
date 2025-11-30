@@ -27,8 +27,8 @@ onMounted(async () => {
 <style scoped>
 .app {
   display: flex;
-  min-height: calc(100vh - 140px);
-  gap: 30px;
+  min-height: calc(100% - 140px);
+  gap: 20px;
   max-width: 1270px;
   margin: 140px auto;
 }
@@ -42,6 +42,6 @@ main {
   border: 1px solid #ffffff30;
   width: 100%;
   padding: 30px;
-  border-radius: 20px;
+  border-radius: 16px;
 }
 </style>

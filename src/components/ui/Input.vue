@@ -1,20 +1,38 @@
 <script setup lang="ts">
-const props = defineProps<{
+import { onMounted, useTemplateRef } from 'vue'
+
+const {
+  isFocused = false,
+  type,
+  placeholder,
+  disabled,
+} = defineProps<{
+  isFocused?: boolean
   type?: string
   placeholder?: string
   disabled?: boolean
 }>()
 
+const input = useTemplateRef<HTMLInputElement>('input')
+
 const model = defineModel<string>()
+
+onMounted(() => {
+  if (isFocused && input.value) {
+    input.value.focus()
+  }
+})
 </script>
 
 <template>
   <input
+    ref="input"
     class="input"
     :type="type || 'text'"
     :placeholder="placeholder"
     :disabled="disabled"
     v-model="model"
+    autocomplete="on"
   />
 </template>
 

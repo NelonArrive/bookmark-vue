@@ -1,5 +1,5 @@
 :root {
-  --color-bg: #111;
+  --color-bg: hsl(0, 0%, 7%);
   --color-bg-hover: #262626;
   --color-fg: #ececec;
   --color-fg-hover: #b6b6b6;

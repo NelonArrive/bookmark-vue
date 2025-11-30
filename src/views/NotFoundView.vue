@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Button } from '@/components'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -14,7 +15,7 @@ function goHome() {
       <h1 class="error-code">404</h1>
       <p class="error-message">Ой! Страница, которую ты ищешь, не найдена.</p>
       <p class="error-description">Возможно, она была удалена или ссылка введена неверно.</p>
-      <button @click="goHome" class="btn-home">Вернуться на главную</button>
+      <Button @click="goHome" class="btn-home">Вернуться на главную</Button>
     </div>
     <div class="illustration">
       <div class="file"></div>

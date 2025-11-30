@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useBookmarkStore } from '@/store/bookmark.store'
 import type { TypeBookmark } from '@/types'
 import { AkLinkChain, MdRoundDelete } from '@kalimahapps/vue-icons'
 
-const { id, category_id, title, url, image, created_at } = defineProps<TypeBookmark>()
+const { id, category_id, title, url, image } = defineProps<TypeBookmark>()
+const bookmarkStore = useBookmarkStore()
 
 const openLink = () => {
   window.open(url, '_blank')
@@ -12,11 +14,15 @@ const openLink = () => {
 <template>
   <div class="card">
     <img class="image" :src="image" :alt="title" />
-    <div class="">
+    <div class="title">
       {{ title }}
     </div>
     <div class="footer">
-      <Button variant="icon" title="Удалить">
+      <Button
+        @click="() => bookmarkStore.deleteBookmark(id, category_id)"
+        variant="icon"
+        title="Удалить"
+      >
         <MdRoundDelete />
       </Button>
 
@@ -29,27 +35,34 @@ const openLink = () => {
 
 <style scoped>
 .card {
+  height: 320px;
   border-radius: 14px;
   background: var(--color-bg-hover);
   box-shadow: 0px 10px 10px 0px rgba(35, 35, 35, 0.1);
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 .image {
-  min-height: 160px;
-  border-radius: 20px;
+  height: 160px;
+  width: 100%;
+  border-radius: 12px;
   object-fit: cover;
 }
 .title {
-  color: var(--color-bg);
+  color: var(--color-fg);
   font-size: 16px;
-  font-weight: 500;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
+
 .footer {
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
 }
 .footer button {
   background-color: var(--color-bg);
