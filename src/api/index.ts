@@ -35,7 +35,10 @@ apiClient.interceptors.response.use(
 export const API_ROUTES = {
   profile: '/profile',
   categories: '/categories',
-  bookmarks: (categoryId: number) => `/categories/${categoryId}/bookmarks`,
+  bookmarks: {
+    getAll: (categoryId: number) => `/categories/${categoryId}/bookmarks`,
+    delete: (id: number) => `/bookmarks/${id}`,
+  },
   auth: {
     login: '/auth/login',
     profile: '/auth/profile',
