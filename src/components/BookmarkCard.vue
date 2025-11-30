@@ -7,7 +7,7 @@ const { id, category_id, title, url, image, created_at } = defineProps<TypeBookm
 
 <template>
   <div class="card">
-    <div class="card-image" :style="{ backgroundImage: `url(${image})` }"></div>
+    <img class="image" :src="image" :alt="title" />
     <div class="">
       {{ title }}
     </div>
@@ -35,10 +35,8 @@ const { id, category_id, title, url, image, created_at } = defineProps<TypeBookm
 }
 .image {
   min-height: 160px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   border-radius: 20px;
+  object-fit: cover;
 }
 .title {
   color: var(--color-bg);

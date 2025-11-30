@@ -3,7 +3,7 @@ import { Button, Input } from '@/components'
 import { useAuthStore } from '@/store/auth.store'
 import { loginSchema } from '@/utils/validation'
 import { useForm } from 'vee-validate'
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const authStore = useAuthStore()
@@ -27,6 +27,7 @@ watch(
       router.push({ name: 'home' })
     }
   },
+  { immediate: true },
 )
 
 const onSubmit = handleSubmit(async (values) => {
